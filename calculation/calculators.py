@@ -6,7 +6,7 @@ from calculation.dots import DOTS
 from calculation.goodlift import GoodLift
 from calculation.ipf import IPF
 from calculation.wilks import Wilks
-from calculation.wilks_2 import NewWilks
+from calculation.wilks_2 import Newwilks
 from calculation.mccullough import McCullough  # ✅ Ensure this file exists
 
 def get_scores(body_weight, total, is_kg, is_female, competition):
@@ -25,7 +25,7 @@ def get_scores(body_weight, total, is_kg, is_female, competition):
 
     # Instantiate calculators
     wilks_calculator = Wilks()
-    new_wilks_calc = NewWilks()
+    new_wilks_calc = Newwilks()
     dots_calc = DOTS()
     ipf_calc = IPF()
     goodlift_calc = GoodLift()

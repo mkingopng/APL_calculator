@@ -170,3 +170,5 @@ cython_debug/
 .pypirc
 /cdk.out/
 .git
+lambda_layer/
+lambda_layer/*

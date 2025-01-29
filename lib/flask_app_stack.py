@@ -2,8 +2,8 @@
 """
 CDK code for infrastructure to deploy calculator app
 """
+import aws_cdk as cdk
 from aws_cdk import (
-    core as cdk,
     aws_lambda as _lambda,
     aws_apigateway as apigw,
     aws_certificatemanager as acm,
@@ -16,7 +16,7 @@ class FlaskAppStack(cdk.Stack):
         super().__init__(scope, id, **kwargs)
 
         # ✅ Fetch your existing certificate in ACM
-        certificate_arn = ""  # foxme: insert real certificate ARN
+        certificate_arn = ""  # fixme: insert real certificate ARN
         certificate = acm.Certificate.from_certificate_arn(self, "Certificate", certificate_arn)
 
         flask_lambda_layer = _lambda.LayerVersion(
@@ -26,13 +26,11 @@ class FlaskAppStack(cdk.Stack):
             description="Layer for Flask dependencies"
         )
 
-        # ✅ Define the Lambda function
         flask_lambda = _lambda.Function(
-            self,
-            "FlaskLambda",
+            self, "FlaskLambda",
             runtime=_lambda.Runtime.PYTHON_3_10,
             handler="lambda_handler.handler",
-            code=_lambda.Code.from_asset("lambda"),  # Ensure your lambda code is in the 'lambda/' directory
+            code=_lambda.Code.from_asset("lambda"),
             memory_size=512,
             timeout=cdk.Duration.seconds(30),
             layers=[flask_lambda_layer],

@@ -14,8 +14,8 @@ STATIC_DIR = os.path.join(BASE_DIR, "static")
 
 app = Flask(
     __name__,
-    template_folder="TEMPLATES_DIR",
-    static_folder="STATIC_DIR"
+    template_folder=TEMPLATES_DIR,
+    static_folder=STATIC_DIR
 )
 
 

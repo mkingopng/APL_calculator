@@ -2,7 +2,7 @@
 """
 lambda handler
 """
-from flask_app import app  # Import your Flask app
-from mangum import Mangum  # AWS Lambda + Flask adapter
+from flask_app.flask_app import app
+from mangum import Mangum
 
-handler = Mangum(app)  # Convert Flask app into a Lambda handler
+handler = Mangum(app)

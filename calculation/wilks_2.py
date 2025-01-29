@@ -3,7 +3,7 @@
 the new wilks score. Not sure of the back story
 """
 
-class NewWilks:  # todo: code this up, test, docstring
+class Newwilks:  # todo: code this up, test, docstring
     def __init__(self):
         self.male_coeff = [
             47.4617885411949,
