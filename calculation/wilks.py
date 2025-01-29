@@ -39,4 +39,3 @@ class Wilks:  # todo: docstring
             denominator += coeff[i] * pow(bw, i)
         score = (500 / denominator) * total
         return round(score, 2)
-

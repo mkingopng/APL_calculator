@@ -7,7 +7,6 @@ class McCullough:
     Formula for McCullough coefficient calculation.
     Ensure the coefficients are correctly implemented.
     """
-
     def __init__(self):
         self.male_coeff = [0.00001, -0.002, 0.5, 10]  # todo: confirm coefficients
         self.female_coeff = [0.00002, -0.0015, 0.4, 9]  # todo: confirm coefficients

@@ -51,4 +51,3 @@ class GoodLift:  # todo: code this up, test, docstring
         power = -coeff[2] * body_weight
         score = total * (100 / (coeff[0] - coeff[1] * math.exp(power)))
         return "0.00" if score < 0 else "{:.2f}".format(score)
-

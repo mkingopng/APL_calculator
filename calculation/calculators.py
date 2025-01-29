@@ -1,4 +1,4 @@
-# calculators.py
+# calculation/calculators.py
 """
 calculators.py - Powerlifting score calculators including McCullough
 """
