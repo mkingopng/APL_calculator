@@ -3,6 +3,7 @@
 CDK code for infrastructure to deploy calculator app
 """
 import aws_cdk as cdk
+from constructs import Construct
 from aws_cdk import (
     aws_lambda as _lambda,
     aws_apigateway as apigw,
@@ -12,7 +13,7 @@ from aws_cdk import (
 )
 
 class FlaskAppStack(cdk.Stack):
-    def __init__(self, scope: cdk.Construct, id: str, **kwargs):
+    def __init__(self, scope: Construct, id: str, **kwargs):  # ✅ Use constructs.Construct
         super().__init__(scope, id, **kwargs)
 
         # ✅ Fetch your existing certificate in ACM
@@ -30,7 +31,7 @@ class FlaskAppStack(cdk.Stack):
             self, "FlaskLambda",
             runtime=_lambda.Runtime.PYTHON_3_10,
             handler="lambda_handler.handler",
-            code=_lambda.Code.from_asset("lambda"),
+            code=_lambda.Code.from_asset(".", exclude=["cdk.out", ".git", "venv", "__pycache__"]),
             memory_size=512,
             timeout=cdk.Duration.seconds(30),
             layers=[flask_lambda_layer],
