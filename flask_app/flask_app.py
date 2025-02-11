@@ -50,15 +50,7 @@ def index():
             is_kg = request.form["unit"] == "kg"
             is_female = request.form["gender"] == "female"
             competition = request.form["competition"]
-
-            age = request.form.get("age", "23")  # Default age = 23
-            age = int(age) if age.isdigit() else 23
-
-            logging.debug(
-                f"Received inputs: BW={body_weight}, Total={total_lifted}, "
-                f"Unit={'KG' if is_kg else 'LB'}, Female={is_female}, "
-                f"Comp={competition}, Age={age}")
-
+            age = int(request.form["age"])
             scores = get_scores(
                 body_weight,
                 total_lifted,
@@ -67,7 +59,6 @@ def index():
                 competition,
                 age
             )
-
     except ValueError as e:
         logging.error(f"Invalid input: {e}")
         scores = None
