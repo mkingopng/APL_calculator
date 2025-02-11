@@ -23,3 +23,8 @@ package-lambda:
 # Deploy using AWS CDK
 deploy: package-lambda
 	cdk deploy --require-approval never
+
+# run the Flask app locally
+.PHONY: run-local
+run-local:
+	FLASK_APP=flask_app/flask_app.py FLASK_ENV=development flask run --host=0.0.0.0 --port=5000

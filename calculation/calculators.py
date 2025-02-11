@@ -7,9 +7,9 @@ from calculation.goodlift import GoodLift
 from calculation.ipf import IPF
 from calculation.wilks import Wilks
 from calculation.wilks_2 import Newwilks
-from calculation.mccullough import McCullough  # ✅ Ensure this file exists
+from calculation.mccullough import McCulloughFoster
 
-def get_scores(body_weight, total, is_kg, is_female, competition):
+def get_scores(body_weight, total, is_kg, is_female, competition, age):
     """
     Generate scores based on inputs
     :param body_weight: Body weight of the lifter
@@ -17,6 +17,7 @@ def get_scores(body_weight, total, is_kg, is_female, competition):
     :param is_kg: Boolean indicating if units are in kilograms
     :param is_female: Boolean indicating if the lifter is female
     :param competition: Type of competition
+    :param age: Age of the lifter
     :return: Dictionary with calculated scores
     """
     weight_coeff = 0.45359237
@@ -29,7 +30,7 @@ def get_scores(body_weight, total, is_kg, is_female, competition):
     dots_calc = DOTS()
     ipf_calc = IPF()
     goodlift_calc = GoodLift()
-    mccullough_calc = McCullough()  # ✅ Ensure this class is implemented
+    mccullough_calc = McCulloughFoster()  # ✅ Ensure this class is implemented
 
     return {
         "body_weight": body_weight,
@@ -40,5 +41,5 @@ def get_scores(body_weight, total, is_kg, is_female, competition):
         "dots": dots_calc.calc_dots(body_weight, total, is_female),
         "ipf": ipf_calc.calc_ipf(body_weight, total, is_female, competition),
         "good_lifts": goodlift_calc.calc_goodlift(body_weight, total, is_female, competition),
-        "mccullough": mccullough_calc.calc_mccullough(body_weight, total, is_female),  # ✅ Implement this in calculation/mccullough.py
+        "mccullough": mccullough_calc.calc_mccullough(body_weight, total, is_female, age)
     }
